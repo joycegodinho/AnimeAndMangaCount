@@ -25,11 +25,15 @@ exports.signIn = async (req, res) => {
     if (!user) {
         res.status(500).json({ message: "User not found"})
     }
-    let valid = await bcrypt.compare(req.body.password, user.password);
-    if (!valid){
-        res.status(500).json({ message: "Wrong password"})
+    else{
+        let valid = await bcrypt.compare(req.body.password, user.password);
+        if (!valid){
+            res.status(500).json({ message: "Wrong password"})
+        }
+        else{
+            res.send(jwt.sign({ _id: user._id }, process.env.JWT_SECRET));
+        }
     }
-    res.send(jwt.sign({ _id: user._id }, process.env.JWT_SECRET));
 };
 
 exports.authRequired = async (req, res, next) => {
