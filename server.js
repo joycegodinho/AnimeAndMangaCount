@@ -32,4 +32,4 @@ app.post('/mangas', authController.authRequired, mangaController.newManga);
 app.post('/auth/signup', authController.signUp);
 app.post('/auth/signin', authController.signIn);
 
-app.listen(port, () => console.log(`Server running at http://localhost:${port}`));
+module.exports = app.listen(port, () => console.log(`Server running at http://localhost:${port}`));

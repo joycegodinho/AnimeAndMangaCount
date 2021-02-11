@@ -13,7 +13,7 @@ exports.signUp = async (req, res) => {
             res.status(500).send(err)
         }
         else {
-            res.status(201).send(result)
+            res.status(201).json(result)
         }
     });
 };
@@ -31,7 +31,7 @@ exports.signIn = async (req, res) => {
             res.status(500).json({ message: "Wrong password"})
         }
         else{
-            res.send(jwt.sign({ _id: user._id }, process.env.JWT_SECRET));
+            res.json({ token: jwt.sign({ _id: user._id }, process.env.JWT_SECRET) });
         }
     }
 };

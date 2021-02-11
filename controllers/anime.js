@@ -6,7 +6,7 @@ exports.allAnimes = (req, res) => {
         if (err) {
             res.status(500).send(err);
         };
-        res.status(200).send(result);
+        res.status(200).json(result);
     });
 
 };
@@ -16,7 +16,7 @@ exports.singleAnime = (req, res) => {
         if (err) {
             res.status(500).send(err);
         };
-        res.status(200).send(result);
+        res.status(200).json(result);
     });
 
 };
@@ -26,7 +26,7 @@ exports.deleteAnime = (req, res) => {
         if (err) {
             res.status(404).send(err);
         };
-        res.status(200).send({ message: 'Deleted' });
+        res.status(200).json({ message: 'Deleted' });
     });
 
 };
@@ -36,7 +36,7 @@ exports.updateAnime = (req, res) => {
         if (err) {
             res.status(500).send(err);
         }
-        res.status(200).send(result);
+        res.status(200).json(result);
     });
 
 };
@@ -47,7 +47,7 @@ exports.newAnime = (req, res) => {
         if (err) {
             res.status(500).send(err);
         };
-        res.status(200).send(result);
+        res.status(201).json(result);
     });
 
 };
