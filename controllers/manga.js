@@ -1,7 +1,7 @@
 const models = require('../models');
 
-exports.allMangas = (req, res) => {
-    let allManga = models.Manga.find({}, (err, result) => {
+exports.allMangas = async (req, res) => {
+    let allManga = await models.Manga.find({}, (err, result) => {
         if (err) {
             res.status(500).send(err);
         };
@@ -10,8 +10,8 @@ exports.allMangas = (req, res) => {
 
 };
 
-exports.singleManga = (req, res) => {
-    let singleManga = models.Manga.findById(req.params.id, (err, result) => {
+exports.singleManga = async (req, res) => {
+    let singleManga = await models.Manga.findById(req.params.id, (err, result) => {
         if (err) {
             res.status(500).send(err);
         };
@@ -20,8 +20,8 @@ exports.singleManga = (req, res) => {
 
 };
 
-exports.deleteManga = (req, res) => {
-    let deleteManga = models.Manga.findByIdAndDelete(req.params.id, (err, result) => {
+exports.deleteManga = async (req, res) => {
+    let deleteManga = await models.Manga.findByIdAndDelete(req.params.id, (err, result) => {
         if (err) {
             res.status(404).send(err);
         };
@@ -30,8 +30,8 @@ exports.deleteManga = (req, res) => {
 
 };
 
-exports.updateManga = (req, res) => {
-    let updateManga = models.Manga.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, result) => {
+exports.updateManga = async (req, res) => {
+    let updateManga = await models.Manga.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, result) => {
         if (err) {
             res.status(500).send(err);
         }
@@ -40,9 +40,9 @@ exports.updateManga = (req, res) => {
 
 };
 
-exports.newManga = (req, res) => {
-    let newManga = new models.Manga (req.body);
-    newManga.save((err, result) => {
+exports.newManga = async (req, res) => {
+    let newManga = await new models.Manga (req.body);
+    await newManga.save((err, result) => {
         if (err) {
             res.status(500).send(err);
         };
