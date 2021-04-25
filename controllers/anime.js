@@ -42,6 +42,7 @@ exports.updateAnime = async (req, res) => {
 };
 
 exports.newAnime = async (req, res) => {
+
     let newAnime = await new models.Anime (req.body);
     await newAnime.save((err, result) => {
         if (err) {

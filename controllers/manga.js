@@ -41,6 +41,7 @@ exports.updateManga = async (req, res) => {
 };
 
 exports.newManga = async (req, res) => {
+    
     let newManga = await new models.Manga (req.body);
     await newManga.save((err, result) => {
         if (err) {
